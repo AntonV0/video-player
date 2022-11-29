@@ -1,17 +1,35 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { Video } from './components/Video';
+import { Menu } from './components/Menu';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const VIDEOS = {
+  fast: 'https://content.codecademy.com/courses/React/react_video-fast.mp4',
+  slow: 'https://content.codecademy.com/courses/React/react_video-slow.mp4',
+  cute: 'https://content.codecademy.com/courses/React/react_video-cute.mp4',
+  eek: 'https://content.codecademy.com/courses/React/react_video-eek.mp4'
+};
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { src: VIDEOS.fast };
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Video Player</h1>
+        <Menu />
+        <Video />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />, 
+  document.getElementById('app')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
